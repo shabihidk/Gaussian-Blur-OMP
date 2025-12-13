@@ -1,0 +1,132 @@
+# .gitignore for Parallel Image Filters Project
+
+# Compiled C/C++ files
+*.o
+*.out
+*.exe
+*.dll
+*.so
+*.dylib
+*.a
+*.lib
+
+# Compiled executables
+filter_serial
+filter_parallel
+filter_serial.exe
+filter_parallel.exe
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Profiling data
+gmon.out
+perf.data
+perf.data.old
+*.gcda
+*.gcno
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# PyQt/Qt
+*.qmlc
+*.jsc
+.qmake.stash
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Images (keep sample images, ignore test outputs)
+images/output/*.png
+images/output/*.jpg
+images/output/*.bmp
+!images/output/.gitkeep
+
+# Results and logs
+results/performance/*.csv
+results/graphs/*.png
+results/graphs/*.svg
+results/graphs/*.pdf
+!results/performance/.gitkeep
+!results/graphs/.gitkeep
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+*.bak
+
+# OS specific
+Thumbs.db
+Desktop.ini
+.DS_Store
+._*
+
+# Build directories
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile.bak
+
+# Package files
+*.tar.gz
+*.zip
+*.rar
+
+# Documentation builds
+docs/_build/
+docs/_static/
+docs/_templates/
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Distribution / packaging
+*.whl
