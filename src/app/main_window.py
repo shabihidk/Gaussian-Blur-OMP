@@ -23,6 +23,7 @@ class MainWindow(QMainWindow):
         tabs.setStyleSheet('QTabBar::tab { padding: 10px 20px; font-size: 13px; }')
         
         self.filter_tab = FilterTab()
+        self.filter_tab.setObjectName('filter_tab')
         tabs.addTab(self.filter_tab, 'Filter')
         
         tabs.addTab(ResultsTab(), 'Results')

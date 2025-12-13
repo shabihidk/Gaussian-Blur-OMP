@@ -61,7 +61,7 @@ for idx, filter_name in enumerate(df['filter'].unique()):
 
 plt.tight_layout()
 plt.savefig('results/graphs/speedup_efficiency.png', dpi=300)
-print(\"Saved results/graphs/speedup_efficiency.png\", flush=True)
+print("Saved results/graphs/speedup_efficiency.png", flush=True)
 
 fig, ax = plt.subplots(figsize=(10, 6))
 
@@ -77,7 +77,7 @@ ax.legend()
 ax.grid(True, alpha=0.3)
 plt.tight_layout()
 plt.savefig('results/graphs/execution_time.png', dpi=300)
-print(\"Saved results/graphs/execution_time.png\", flush=True)
+print("Saved results/graphs/execution_time.png", flush=True)
 
 summary = df.groupby(['filter', 'schedule'])['speedup'].max().reset_index()
 summary.columns = ['Filter', 'Schedule', 'Max Speedup']

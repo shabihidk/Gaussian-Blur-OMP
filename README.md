@@ -12,6 +12,20 @@ A parallel computing project that applies image filters using OpenMP. We're expl
 
 **Plus**: A clean Python GUI app for testing and visualization!
 
+## Screenshots
+
+### Main Interface
+![Main Interface](docs/main.png)
+
+### Image Filtering in Action
+![Filtering](docs/filtering.png)
+
+### Automated Testing
+![Testing](docs/tester.png)
+
+### Performance Results
+![Results](docs/testresults.png)
+
 ## Project Structure
 
 ```
@@ -37,8 +51,14 @@ pip install PyQt5 opencv-python pillow numpy matplotlib pandas psutil
 ## Run It
 
 **Compile once:**
-```bash
-cd src/parallel
+```bashgui_app.py
+```
+
+## Features
+
+- **Filter Tab**: Load images, apply filters with customizable thread counts and scheduling policies
+- **Results Tab**: View performance graphs (speedup, efficiency, execution time)
+- **Testing Tab**: Run automated benchmarks across all filter/thread/scheduling combinationssrc/parallel
 gcc -O3 -fopenmp -Wall -o filter.exe main.c filters.c image_utils.c -lm
 ```
 
@@ -52,16 +72,22 @@ OMP_NUM_THREADS=8 ./filter input.png output.png gaussian
 **GUI App:**
 ```bash
 python src/app/main.py
-```
+``Metrics: Speedup, Efficiency, Execution Time
+- Test images: 1920x1080
 
-## What We're Testing
+## Results
 
-- Thread counts: 1, 2, 4, 8, 16
-- Scheduling: static, dynamic, guided
-- Images: 1080p and 4K
-- Metrics: Speedup ($S_p = T_1/T_p$), Efficiency ($E_p = S_p/p$)
+All performance graphs and test data are automatically generated and saved to `results/`:
+- `performance/results.csv` - Raw benchmark data
+- `graphs/speedup_efficiency.png` - Speedup and efficiency curves
+- `graphs/execution_time.png` - Execution time comparison
+## Project Status
 
-## Development Phases
+1. ✅ Setup & Documentation
+2. ✅ OpenMP Implementation (works as serial with 1 thread)
+3. ✅ Performance Analysis & Testing
+4. ✅ GUI Application with Real-time Monitoring
+5. ✅ Automated Benchmarkingases
 
 1. ✅ Setup & Docs
 2. ⏳ Serial Implementation  
