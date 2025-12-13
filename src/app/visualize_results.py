@@ -1,6 +1,14 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+import os
+import sys
+
+# Ensure we're working from project root
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+os.chdir(project_root)
+
+os.makedirs('results/graphs', exist_ok=True)
 
 df = pd.read_csv('results/performance/results.csv')
 
@@ -52,8 +60,8 @@ for idx, filter_name in enumerate(df['filter'].unique()):
     ax_efficiency.set_ylim([0, 100])
 
 plt.tight_layout()
-plt.savefig('results/performance/speedup_efficiency.png', dpi=300)
-print("✓ Saved results/performance/speedup_efficiency.png")
+plt.savefig('results/graphs/speedup_efficiency.png', dpi=300)
+print(\"Saved results/graphs/speedup_efficiency.png\", flush=True)
 
 fig, ax = plt.subplots(figsize=(10, 6))
 
@@ -68,8 +76,8 @@ ax.set_ylabel('Time (ms)')
 ax.legend()
 ax.grid(True, alpha=0.3)
 plt.tight_layout()
-plt.savefig('results/performance/execution_time.png', dpi=300)
-print("✓ Saved results/performance/execution_time.png")
+plt.savefig('results/graphs/execution_time.png', dpi=300)
+print(\"Saved results/graphs/execution_time.png\", flush=True)
 
 summary = df.groupby(['filter', 'schedule'])['speedup'].max().reset_index()
 summary.columns = ['Filter', 'Schedule', 'Max Speedup']

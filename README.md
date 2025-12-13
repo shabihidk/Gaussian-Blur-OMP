@@ -1,10 +1,6 @@
 # Parallel Image Filters Using OpenMP
 
-> **OpenMP-accelerated image filters with real-time thread monitoring**
-
 **CS361L Project** | Muhammad Shabih Ul Hassan Raja (2023506) | Syed Ghazi Abbas (2023679)
-
-📦 **Repository**: [github.com/shabihidk/Gaussian-Blur-OMP](https://github.com/shabihidk/Gaussian-Blur-OMP)
 
 ## What is This?
 
@@ -14,15 +10,14 @@ A parallel computing project that applies image filters using OpenMP. We're expl
 2. **Sharpen Filter** - Enhances edges  
 3. **Sobel Edge Detector** - Detects edges
 
-**Plus**: A clean Python GUI app with **task-manager-style live monitoring** - see each thread's progress in real-time!
+**Plus**: A clean Python GUI app for testing and visualization!
 
 ## Project Structure
 
 ```
 Parallel Image Filtering/
-├── src/serial/         # Baseline C code
-├── src/parallel/       # OpenMP parallelized code
-├── src/app/           # Python GUI
+├── src/parallel/       # OpenMP implementation (1 thread = serial)
+├── src/app/           # Python GUI modules
 ├── images/            # Input/output images
 ├── results/           # Performance data & graphs
 └── lib/               # stb_image library
@@ -36,22 +31,21 @@ Parallel Image Filtering/
 
 ### 2. Python GUI
 ```bash
-cd src/app
 pip install PyQt5 opencv-python pillow numpy matplotlib pandas psutil
-python check_dependencies.py
 ```
 
 ## Run It
 
-**Serial version:**
+**Compile once:**
 ```bash
-gcc -O3 -o filter main.c -lm
-./filter input.png output.png gaussian
+cd src/parallel
+gcc -O3 -fopenmp -Wall -o filter.exe main.c filters.c image_utils.c -lm
 ```
 
-**Parallel version:**
+**Run (1 thread = serial, >1 = parallel):**
 ```bash
-gcc -O3 -fopenmp -o filter main.c -lm
+./filter.exe input.jpg output.png gaussian 1 static    # Serial execution
+./filter.exe input.jpg output.png gaussian 8 static    # Parallel with 8 threads
 OMP_NUM_THREADS=8 ./filter input.png output.png gaussian
 ```
 
@@ -79,5 +73,3 @@ python src/app/main.py
 ---
 
 **CS361L** - Ghulam Ishaq Khan Institute | December 2025
-
-🔗 **GitHub**: [shabihidk/Gaussian-Blur-OMP](https://github.com/shabihidk/Gaussian-Blur-OMP)

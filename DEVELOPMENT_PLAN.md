@@ -11,32 +11,35 @@ Simple roadmap for the CS361L parallel image filters project.
 
 ---
 
-## Phase 2: Serial Implementation ⏳
+## Phase 2: Implementation ✅
 
-**Goal**: Working C code for all three filters (baseline for comparison)
+**Goal**: Working C code with OpenMP (1 thread = serial baseline)
 
-### Tasks
-- [ ] Download stb_image.h → place in `lib/`
-- [ ] Write `image_utils.c` - load/save images
-- [ ] Implement Gaussian Blur (5×5 kernel)
-- [ ] Implement Sharpen Filter (3×3 kernel)  
-- [ ] Implement Sobel Edge Detector
-- [ ] Test with sample images
-- [ ] Measure execution time
+### Completed
+- [x] Downloaded stb_image.h → placed in `lib/`
+- [x] Wrote `image_utils.c` - load/save images
+- [x] Implemented Gaussian Blur (5×5 kernel)
+- [x] Implemented Sharpen Filter (3×3 kernel)  
+- [x] Implemented Sobel Edge Detector
+- [x] Added OpenMP support (works as serial with 1 thread)
+- [x] Tested with sample images
+- [x] Measured execution time
 
-### Files to Create
+### Files
 ```
-src/serial/
-├── main.c           # Entry point
-├── filters.c        # Filter implementations
+src/parallel/        # Single implementation for both serial and parallel
+├── main.c           # Entry point with thread control
+├── filters.c        # OpenMP filter implementations
 ├── filters.h
 ├── image_utils.c    # Image I/O
 └── image_utils.h
 ```
 
+**Note**: No separate serial implementation needed - parallel code with 1 thread = serial execution
+
 ---
 
-## Phase 3: Parallel Implementation ⏳
+## Phase 3: Parallel Optimization ✅
 
 **Goal**: Speed up filters with OpenMP
 
