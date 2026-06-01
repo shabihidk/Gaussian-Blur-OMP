@@ -3,7 +3,6 @@
 # Compiled C/C++ files
 *.o
 *.out
-*.exe
 *.dll
 *.so
 *.dylib
@@ -13,8 +12,6 @@
 # Compiled executables
 filter_serial
 filter_parallel
-filter_serial.exe
-filter_parallel.exe
 
 # Debug files
 *.dSYM/

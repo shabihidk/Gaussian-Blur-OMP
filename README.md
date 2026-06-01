@@ -28,74 +28,57 @@ A parallel computing project that applies image filters using OpenMP. We're expl
 
 ## Project Structure
 
-```
 Parallel Image Filtering/
-├── src/parallel/       # OpenMP implementation (1 thread = serial)
+├── src/parallel/      # OpenMP C implementation (1 thread = serial)
 ├── src/app/           # Python GUI modules
 ├── images/            # Input/output images
 ├── results/           # Performance data & graphs
 └── lib/               # stb_image library
-```
 
 ## Quick Setup
 
 ### 1. C/OpenMP
-- Install GCC with OpenMP: `gcc -fopenmp --version`
-- Download [stb_image.h](https://github.com/nothings/stb) → place in `lib/`
+- Install GCC with OpenMP: gcc -fopenmp --version
+- Download stb_image.h (https://github.com/nothings/stb) → place in lib/
 
 ### 2. Python GUI
-```bash
+Install the required dependencies:
 pip install PyQt5 opencv-python pillow numpy matplotlib pandas psutil
-```
 
 ## Run It
 
-**Compile once:**
-```bashgui_app.py
-```
+**Compile the C executable:**
+gcc -O3 -fopenmp -Wall src/parallel/main.c src/parallel/filters.c src/parallel/image_utils.c -o src/parallel/filter.exe -lm
+
+**Run the GUI App:**
+python gui_app.py
+
+**Run via CLI (Optional):**
+# Syntax: ./filter.exe <input> <output> <filter_name> <threads> <schedule>
+src/parallel/filter.exe input.jpg output.png gaussian 1 static    # Serial execution
+src/parallel/filter.exe input.jpg output.png gaussian 8 static    # Parallel with 8 threads
 
 ## Features
 
-- **Filter Tab**: Load images, apply filters with customizable thread counts and scheduling policies
-- **Results Tab**: View performance graphs (speedup, efficiency, execution time)
-- **Testing Tab**: Run automated benchmarks across all filter/thread/scheduling combinationssrc/parallel
-gcc -O3 -fopenmp -Wall -o filter.exe main.c filters.c image_utils.c -lm
-```
-
-**Run (1 thread = serial, >1 = parallel):**
-```bash
-./filter.exe input.jpg output.png gaussian 1 static    # Serial execution
-./filter.exe input.jpg output.png gaussian 8 static    # Parallel with 8 threads
-OMP_NUM_THREADS=8 ./filter input.png output.png gaussian
-```
-
-**GUI App:**
-```bash
-python src/app/main.py
-``Metrics: Speedup, Efficiency, Execution Time
-- Test images: 1920x1080
+- **Filter Tab**: Load images, apply filters with customizable thread counts and scheduling policies.
+- **Results Tab**: View performance graphs. Metrics: Speedup, Efficiency, Execution Time. Test images: 1920x1080.
+- **Testing Tab**: Run automated benchmarks across all filter/thread/scheduling combinations.
 
 ## Results
 
-All performance graphs and test data are automatically generated and saved to `results/`:
-- `performance/results.csv` - Raw benchmark data
-- `graphs/speedup_efficiency.png` - Speedup and efficiency curves
-- `graphs/execution_time.png` - Execution time comparison
+All performance graphs and test data are automatically generated and saved to results/:
+- performance/results.csv - Raw benchmark data
+- graphs/speedup_efficiency.png - Speedup and efficiency curves
+- graphs/execution_time.png - Execution time comparison
+
 ## Project Status
 
 1. ✅ Setup & Documentation
 2. ✅ OpenMP Implementation (works as serial with 1 thread)
 3. ✅ Performance Analysis & Testing
 4. ✅ GUI Application with Real-time Monitoring
-5. ✅ Automated Benchmarkingases
-
-1. ✅ Setup & Docs
-2. ⏳ Serial Implementation  
-3. ⏳ Parallel Implementation
-4. ⏳ Performance Analysis
-5. ⏳ GUI Application
-6. ⏳ Final Report
+5. ✅ Automated Benchmarking
 
 ---
 
-**CS361L** - Ghulam Ishaq Khan Institute | December 2025
+**CS361L** - Ghulam Ishaq Khan Institute | June 2026
